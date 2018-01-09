@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <!--
@@ -19,8 +23,34 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Voice Calculation</title>
   </head>
+
+  <script>
+  function startRecognizer()
+  {
+    var rec = new webkitSpeechRecognition();
+    rec.lang = 'ru';
+
+    rec.oneresult = function (e)
+    {
+      var rez = e.results[e.resultIndex];
+      var str = rec[0].transcript;
+
+    }
+
+    rec.onend = function()
+    {
+      startRecognizer();
+    }
+
+    rec.start();
+
+  }
+
+  startRecognizer();
+  </script>
+
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
